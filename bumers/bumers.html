@@ -1,0 +1,648 @@
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1920" />
+<title>GameDev — Стань профессионалом</title>
+<style>
+  :root{
+    --deep-blue: #00234E;
+    --beige: #F5F1EC;
+    --muted: #6B7280;
+    --coral: #c9a171;
+    --card-bg: #FFFFFF;
+    --max-width: 1200px;
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: Inter, "Proxima Nova", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #0e233b;
+    background: var(--beige);
+  }
+  .page{
+    background: linear-gradient(180deg, var(--deep-blue) 0px, var(--deep-blue) 520px, var(--beige) 520px);
+    min-height:100vh;
+  }
+  .container{
+    width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0px 0 40px 0;
+    color:white;
+  }
+  .logo{
+    font-weight:700;
+    font-size:28px;
+    letter-spacing:1px;
+    color: #c9a171;
+
+  }
+  nav{
+    display:flex;
+    gap:28px;
+    align-items:center;
+  }
+  nav a{
+    color: #E6EEF9;
+    text-decoration:none;
+    font-size:16px;
+  }
+  .cta-top{
+    background: var(--coral);
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    box-shadow: 0 6px 20px rgba(11,61,145,0.15);
+    text-decoration:none;
+    font-weight:700;
+  }
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 520px;
+    gap:40px;
+    align-items:center;
+    padding:-10px 0 80px 0;
+  }
+  .hero-left{
+    color:white;
+  }
+  .hero h1{
+    margin:0 0 20px 0;
+    font-size:64px;
+    line-height:1.02;
+    font-weight:800;
+    font-family: Inter, "Proxima Nova", Arial;
+  }
+  .hero p.lead{
+    margin: 15 0 40px 0;
+    color: #DCE9FF;
+    font-size:18px;
+    max-width:650px;
+  }
+  .hero .actions{
+    display:flex;
+    gap:16px;
+    margin-top:12px;
+  }
+  .btn-primary{
+    background: var(--coral);
+    color:white;
+    font-weight:700;
+    padding:14px 22px;
+    border-radius:10px;
+    border: 1px solid #F5F1EC;
+    cursor:pointer;
+    box-shadow: 0 6px 20px rgba(85, 62, 0, 0.397);
+  }
+  .btn-secondary {
+    background-color: #F5F1EC;
+    color: #00234E;
+    border: 1px solid #00234E;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .hero-right{
+    justify-self:end;
+  }
+  .hero-right img{
+    width:85%;
+    border-radius:14px;
+    box-shadow: 0 14px 30px rgba(2,7,30,0.35);
+    display:block;
+  }
+
+  /* WHY US */
+  section.features{
+    background: var(--beige);
+    padding: 36px 0;
+  }
+  .features-grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:24px;
+    margin-top:30px;
+  }
+  .card{
+    background: #fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 0 6px 18px rgba(11,61,145,0.04);
+    min-height:120px;
+  }
+  .card h3{ margin:6px 0 8px 0; font-size:20px; color:var(--deep-blue);}
+  .card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.45; }
+
+
+  /* FOOTER */
+  footer{
+    background:linear-gradient(0deg, #072756, #0B3D91);
+    color:#E6EEF9;
+    padding:28px 0;
+    margin-top:28px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+  }
+  .contacts p{ margin:6px 0; color:#D6E6FF; font-size:14px;}
+  .newsletter input[type="email"]{
+    padding:10px 12px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    width:260px;
+  }
+  .newsletter button{
+    padding:10px 14px; margin-left:8px; border-radius:8px;
+    border:none; background:#fff; color:var(--deep-blue); font-weight:700;
+    cursor:pointer;
+  }
+
+  /* Layout helpers */
+  h2.section-title{ color:var(--deep-blue); margin:0; font-size:28px;}
+  .spacer{ height:12px; }
+
+  /* Desktop-only hint */
+  @media (max-width:1200px){
+    .container{ width:1000px; }
+  }
+  @media (max-width:980px){
+    /* keep desktop-only feel but scale down */
+    .hero{ grid-template-columns: 1fr 420px; gap:20px; }
+    .hero h1{ font-size:48px; }
+  }
+
+
+  .stats .stat-card{
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    padding:18px;
+    border-radius:10px;
+    min-width:180px;
+    text-align:center;
+    box-shadow: 0 8px 20px rgba(2,7,30,0.25);
+  }
+  .stats .stat-card h3{ margin:0; font-size:28px; }
+  .instructors-grid{
+
+    display:flex;
+    gap:20px;
+    margin:30 0 0;
+  }
+   section.instructors{
+    background: var(--beige);
+    padding: 36px 0;
+  }
+   section.modules-detailed{
+    background: var(--beige);
+    padding: 36px 0;
+  }
+  .faq{
+    background: var(--beige);
+    padding: 36px 0; 
+    margin-right: 220;
+
+  }
+/* карточка с фоновым изображением */
+.module-d {
+  position: relative;               /* нужно для overlay */
+  background-color: #fff;           /* fallback если картинка не загрузилась */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(11,61,145,0.03);
+  padding: 16px;
+  min-height: 200px;                /* высота карточки — подстрой под дизайн */
+  display: flex;
+  align-items: flex-end;            /* текст будет прижат к низу */
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #fff;                      /* текст поверх картинки — белый */
+}
+
+/* тёмный полупрозрачный слой для контраста текста */
+.module-d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.12));
+  pointer-events: none;
+}
+
+/* контейнер текста — поверх overlay */
+.module-d .module-content {
+  position: relative;   /* чтобы быть над ::before */
+  z-index: 1;
+}
+
+/* заголовок и текст — делаем читабельными */
+.module-d h4 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+.module-d p {
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* адаптив: уменьшить высоту на узких экранах */
+@media (max-width: 600px) {
+  .module-d { min-height: 140px; padding: 12px; }
+  .module-d h4 { font-size: 16px; }
+}
+
+
+  
+  .instructor{ background:#fff; padding:18px; border-radius:10px; width:190px; box-shadow: 0 6px 18px rgba(11,61,145,0.04); text-align:center;}
+  .instructor h4{ margin:12px 0 4px 0; color:var(--deep-blue); }
+  .instructor .muted{ color:var(--muted); font-size:13px; margin:0; }
+
+  .avatar-lg{ width:96px; height:96px; margin:0 auto; border-radius:12px; overflow:hidden; border:6px solid #fff; box-shadow: 0 10px 20px rgba(11,61,145,0.06); }
+  .avatar-lg img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .modules-grid-detailed{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; margin:30px 0 0; }
+  .module-d{ background:#fff; padding:16px; border-radius:8px; box-shadow: 0 6px 18px rgba(11,61,145,0.03); }
+  .faq-list{margin:30px 0 0;}
+  .faq-list details{ background:#fff; padding:14px 16px; border-radius:8px; margin-bottom:10px; box-shadow: 0 6px 18px rgba(11,61,145,0.03); }
+  .faq-list summary{ cursor:pointer; font-weight:700; color:var(--deep-blue); }
+  .faq-list p{ margin:8px 0 0 0; color:var(--muted); }
+
+
+  
+ /* --- ЗАМЕНИ ВСЁ, ЧТО БЫЛО С ТЕСТИМОНИАЛАМИ И ENROLL --- */
+.testimonials-enroll {
+  padding: 28px 0;
+}
+
+/* wrapper с двумя колонками: форма слева, отзывы справа */
+.testimonials-enroll .inner {
+  max-width: var(--max-width);
+  margin: 0 0;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 0 0px;
+  flex-wrap: wrap;
+}
+
+
+/* левая колонка: форма — фиксированная ширина */
+.col-form {
+  flex: 0 0 460px;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* правая колонка: отзывы — занимает оставшееся место */
+.col-testimonials {
+  flex: 1 1 420px;
+  min-width: 280px;
+}
+
+/* карточка формы (enroll-card) */
+.enroll-card{
+  width: 100%;
+  background:#fff;
+  padding: 30px 40px;
+  border-radius:12px;
+  box-shadow: 0 12px 25px rgba(2,7,30,0.06);
+  max-width:880px;
+  box-sizing: border-box;
+  
+}
+.enroll-form input{
+  display:block;
+  width:100%;
+  padding:12px 14px;
+  margin-top:12px;
+  border-radius:8px;
+  border:1px solid #E7E9EE;
+  font-size:14px;
+  box-sizing:border-box;
+}
+.enroll-form .btn-secondary{
+  background:transparent;
+  color:var(--deep-blue);
+  border:1px solid rgba(11,61,145,0.08);
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* отзывы — вертикальный список */
+.test-row{
+  display:flex;
+  flex-direction: column;
+  gap:20px;
+  align-items: flex-start;
+}
+.testimonial{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  color:var(--deep-blue);
+  width:70%;
+}
+
+/* аватар — фиксированный и не сжимается */
+.avatar{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow: 0 6px 18px rgba(11,61,145,0.06);
+  border:4px solid #fff;
+  flex: 0 0 64px;
+  flex-shrink: 0;
+}
+.avatar img{ width:100%; height:100%; object-fit:cover; display:block;}
+.testimonial .info h5{ margin:0; font-size:16px; font-weight:700; color:var(--deep-blue); }
+.testimonial .info p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; line-height:1.35; }
+
+/* адаптив: на узких экранах колонки переходят в стопку */
+@media (max-width:900px){
+  .testimonials-enroll .inner {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .col-form { order: 1; }
+  .col-testimonials { order: 2; }
+}
+
+
+  /* small adjustments */
+  .hero p.lead{ max-width:680px; }
+  footer .footer-grid{ align-items:center; }
+
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <header>
+        <div class="logo"><img src="./logo7.svg" class="logo-icon" width="80" height="80" >
+</div>
+        <nav>
+          <a href="#">Программы</a>
+          <a href="#">Преподаватели</a>
+          <a href="#">Расписание</a>
+          <a href="#">Отзывы</a>
+          <a href="#">Цена</a>
+          <a class="cta-top" href="#">Записаться</a>
+        </nav>
+      </header>
+
+        <main>
+        <section class="hero" aria-label="Главный экран">
+            <div class="hero-left">
+            <h1>Стань GameDev профессионалом за 9 месяцев</h1>
+            <p class="lead">Практические проекты, наставничество от индустрии, портфолио для трудоустройства</p>
+            <div class="actions">
+                <button class="btn-primary">Начать бесплатно</button>
+                <button class="btn-secondary">Узнать программу</button>
+            </div>
+            </div>
+            <div class="hero-right">
+            <img src="./team.png" alt="Команда за ноутбуком" loading="eager"
+                onerror="console.warn('Image failed to load:', this.src); this.style.display='none';" />
+            </div>
+        </section>
+
+        <section class="features" aria-label="Почему мы?">
+          <h2 class="section-title">Почему мы?</h2>
+          <div class="features-grid">
+            <div class="card">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="color:var(--deep-blue)"><path d="M3 13h4v7H3zM10 8h4v12h-4zM17 3h4v17h-4z" fill="#0B3D91"/></svg>
+              <h3>Карьера</h3>
+              <p>Помощь в трудоустройстве и развитие навыков.</p>
+            </div>
+            <div class="card">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M6 12h12v6H6zM8 6h8v4H8z" fill="#0B3D91"/></svg>
+              <h3>Практика</h3>
+              <p>Работа над игровыми проектами с нуля до релиза.</p>
+            </div>
+            <div class="card">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 4v6c0 5-7 9-7 9s-7-4-7-9V6l7-4z" fill="#0B3D91"/></svg>
+              <h3>Сертификат</h3>
+              <p>Официальное подтверждение ваших знаний и навыков.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="instructors" aria-label="Преподаватели">
+          <h2 class="section-title">Наши преподаватели</h2>
+            <div class="instructors-grid">
+            <div class="instructor">
+                <div class="avatar-lg">
+                <img src="./boy.png" alt="Преподаватель 1" loading="lazy"
+                    onerror="console.warn('Image failed to load:', this.src); this.style.display='none'">
+                </div>
+                <h4>Алексей Смирнов</h4>  
+                <p class="muted">Lead Game Designer — Ubisoft</p>
+            </div>
+
+            
+            <div class="instructor">
+            <div class="avatar-lg">
+                <img src="./girl2.png" alt="Преподаватель 2" loading="lazy"
+                    onerror="console.warn('Image failed to load:', this.src); this.style.display='none'">
+                </div>
+                <h4>Ольга Кузнецова</h4>
+                <p class="muted">Senior Artist — Indie Studio</p>
+            </div>
+
+            <div class="instructor">
+                <div class="avatar-lg">
+                <img src="./girl2 (2).png" alt="Преподаватель 1" loading="lazy"
+                    onerror="console.warn('Image failed to load:', this.src); this.style.display='none'">
+                </div>
+                <h4>Полина Антипова</h4>  
+                <p class="muted">3д-дженералист</p>
+            </div>
+
+
+            
+            <div class="instructor">
+            <div class="avatar-lg">
+                <img src="./man2.png" alt="Преподаватель 2" loading="lazy"
+                    onerror="console.warn('Image failed to load:', this.src); this.style.display='none'">
+                </div>
+                <h4>Артемий Мустанг</h4>
+                <p class="muted">Senior Artist — Art Studio</p>
+            </div>
+
+            <div class="instructor">
+            <div class="avatar-lg">
+                <img src="./man.png" alt="Преподаватель 3" loading="lazy"
+                    onerror="console.warn('Image failed to load:', this.src); this.style.display='none'">
+            </div>
+            <h4>Павел Иванов</h4>
+            <p class="muted">Programmer — Mobile Games</p>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="modules-detailed" aria-label="Модули подробности">
+          <h2 class="section-title">Программа курса</h2>
+          <div class="modules-grid-detailed">
+            <div class="module-d" style="background-image: url('../zumers/i3.png');  background-position:center 34%;" aria-label="Введение в GameDev — превью" >
+              <div class="module-content">
+                <h4>Введение в GameDev</h4>
+                <p>Основы движков, принципы геймдизайна, инструменты (4 недели).</p>
+              </div>
+            </div>
+
+            <div class="module-d" style="background-image: url('../zumers/i2.png');  background-position:center 20%;" aria-label="Art & Animation — превью">
+              <div class="module-content">
+                <h4>Art & Animation</h4>
+                <p>2D/3D графика, оптимизация, пайплайн художника (8 недель).</p>
+              </div>
+            </div>
+
+            <div class="module-d" style="background-image: url('./general3.png');  background-position:center 70%;" aria-label="Программирование игр — превью">
+              <div class="module-content">
+                <h4>Программирование игр</h4>
+                <p>С# / Unity, архитектура проекта, отладка (10 недель).</p>
+              </div>
+            </div>
+
+            <div class="module-d" style="background-image: url('../zumers/c183b449cb0b29f6bb352d73bb979ca8.jpg');  background-position:center 45%;" aria-label="Портфолио и выпускной проект — превью">
+              <div class="module-content">
+                <h4>Портфолио и выпускной проект</h4>
+                <p>Работа в командах, релиз мини-игры, подготовка портфолио (12 недель).</p>
+              </div>
+            </div>
+          </div>
+
+
+          
+        </section>
+
+        <section class="faq" aria-label="Вопросы и ответы">
+          <h2 class="section-title">Часто задаваемые вопросы</h2>
+          <div class="faq-list">
+            <details open>
+              <summary>С какого уровня можно начать?</summary>
+              <p>Курс рассчитан на начинающих и тех, кто имеет базовые навыки. Есть вводный модуль для абсолютных новичков.</p>
+            </details>
+            <details>
+              <summary>Помогаете ли с трудоустройством?</summary>
+              <p>Да — у нас есть отдел карьерного сопровождения, подготовка резюме и помощь в собеседованиях.</p>
+            </details>
+            <details>
+              <summary>Какие проекты в портфолио?</summary>
+              <p>Мини-игры, уровни, арт-паки и интерактивные демо — все проекты можно публиковать в портфолио.</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="testimonials-enroll" aria-label="Отзывы и запись">
+        <div class="inner">
+          <!-- ЛЕВАЯ КОЛОНКА: форма -->
+          <aside class="col-form" aria-label="Форма записи">
+            <div class="enroll-card">
+              <h3>Готовы начать?</h3>
+              <p class="muted">Заполните форму — мы свяжемся и подберём программу.</p>
+              <form id="enrollForm" class="enroll-form" action="#" method="post" onsubmit="return handleEnroll(event)">
+                <input type="text" name="name" placeholder="Имя и фамилия" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="tel" name="phone" placeholder="Телефон" />
+                <div style="margin-top:12px">
+                  <button class="btn-primary" type="submit">Отправить заявку</button>
+                  <button type="button" class="btn-secondary" onclick="scrollToSection('contacts')">Позвонить нам</button>
+                </div>
+              </form>
+            </div>
+          </aside>
+
+          <!-- ПРАВАЯ КОЛОНКА: заголовок + отзывы -->
+          <div class="col-testimonials" aria-label="Отзывы">
+            <h2 class="section-title">Отзывы</h2>
+            <div class="spacer"></div>
+            <div class="test-row">
+              <div class="testimonial">
+                <div class="avatar"><img src="boy.png" alt="Иван Петров"></div>
+                <div class="info"><h5>Иван Петров</h5><p>Отличная школа, практические проекты помогли быстро стартовать. Легко усваивается материал, и главное, применяется на практике легко..</p></div>
+              </div>
+              <div class="testimonial">
+                <div class="avatar"><img src="girl.png" alt="Анна Смирчова"></div>
+                <div class="info"><h5>Анна Смирчова</h5><p>Хорошие наставники и удобный график обучения. Однозначно советую всем читателям и знакомым. Я воодушевлена на работу!</p></div>
+              </div>
+              <div class="testimonial">
+                <div class="avatar"><img src="man.png" alt="Дмитрий Иванов"></div>
+                <div class="info"><h5>Дмитрий Иванов</h5><p>Программа дала реальные навыки и портфолио. Не знаю, что бы делал без этой школы! Столько всего нового и интересного.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      </main>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="contacts">
+            <p><strong>Контакты</strong></p>
+            <p>info@example.com</p>
+            <p>+7 123 459-78-90</p>
+          </div>
+          <div class="newsletter">
+            <p><strong>Подпишитесь на новости</strong></p>
+            <div style="margin-top:8px;">
+              <input type="email" placeholder="Email" />
+              <button>Подписаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+function scrollToSection(id){
+  const el = document.getElementById(id) || document.querySelector('[aria-label="'+id+'"]');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function handleEnroll(e){
+  e.preventDefault();
+  const form = document.getElementById('enrollForm');
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  if(!name || !email){ alert('Пожалуйста, заполните имя и email.'); return false; }
+  // emulate send
+  alert('Заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+  form.reset();
+  return false;
+}
+</script>
+
+</body>
+</html>
