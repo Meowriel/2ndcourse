@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Календарь и таблица умножения</title>
+<style>
+  body { font-family: Inter, system-ui, sans-serif; padding: 24px; background:#f6f7fb; color:#111 }
+  .card { background:white; border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(20,20,40,0.06); margin-bottom:24px; max-width:720px }
+  h2 { margin:0 0 12px 0; font-size:18px }
+  .calendar { width:100%; border-collapse:collapse; text-align:center }
+  .calendar th, .calendar td { padding:8px; border:1px solid #e6e9f0; width:14.28% }
+  .calendar th { background:#f0f4ff; font-weight:600 }
+  .today { background: #ffeccf; border:1px solid #ffd7a8; border-radius:6px; display:inline-block; width:36px; height:36px; line-height:36px }
+  .muted { color:#777; }
+  .controls { display:flex; gap:8px; align-items:center; margin-bottom:8px }
+  button { padding:6px 10px; border-radius:8px; border:1px solid #cfd6ff; background:linear-gradient(#fff,#f6f8ff); cursor:pointer }
+</style>
+</head>
+<body>
+
+<div class="card" id="calendarCard">
+  <div class="controls">
+    <button id="prevBtn">&larr; Назад</button>
+    <button id="nextBtn">Вперёд &rarr;</button>
+    <div style="flex:1"></div>
+    <div class="muted">Понедельник — первый день недели</div>
+  </div>
+  <h2 id="monthTitle">Месяц Год</h2>
+  <table class="calendar" id="calendarTable" aria-label="Календарь месяца">
+    <!-- шапка и дни будут добавлены скриптом -->
+  </table>
+</div>
+
+<script>
+/*
+  Алгоритм:
+  1) Получаем год и месяц (0..11).
+  2) Узнаём, какой день недели у 1-го числа (в JS getDay(): 0=вс,1=пн,...).
+  3) Пересчитываем так, чтобы понедельник был 0: (jsDay + 6) % 7.
+  4) Узнаём количество дней в месяце: new Date(year, month+1, 0).getDate()
+  5) Заполняем таблицу строками по 7 ячеек.
+*/
+
+const monthTitle = document.getElementById('monthTitle');
+const calendarTable = document.getElementById('calendarTable');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let today = new Date();
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth(); // 0..11
+
+function buildCalendar(year, month) {
+  // Очистить
+  calendarTable.innerHTML = '';
+
+  // Заголовок месяца
+  const monthsRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  monthTitle.textContent = monthsRu[month] + ' ' + year;
+
+  // Заголовок дней недели (понедельник..воскресенье)
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  const weekdays = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  weekdays.forEach(d => {
+    const th = document.createElement('th');
+    th.textContent = d;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  calendarTable.appendChild(thead);
+
+  // Тело таблицы
+  const tbody = document.createElement('tbody');
+
+  // 1-й день месяца
+  const firstDayJS = new Date(year, month, 1).getDay(); // 0=вс...6=сб
+  const startOffset = (firstDayJS + 6) % 7; // переводим так, чтобы понедельник=0
+
+  // количество дней в месяце
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  let row = document.createElement('tr');
+  // заполнить первые пустые ячейки
+  for (let i = 0; i < startOffset; i++) {
+    const td = document.createElement('td');
+    td.textContent = '';
+    row.appendChild(td);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    if (row.children.length === 7) {
+      tbody.appendChild(row);
+      row = document.createElement('tr');
+    }
+
+    const td = document.createElement('td');
+
+    // выделить сегодня
+    if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+      const span = document.createElement('span');
+      span.className = 'today';
+      span.textContent = day;
+      td.appendChild(span);
+    } else {
+      td.textContent = day;
+    }
+
+    row.appendChild(td);
+  }
+
+  // дополняем последний ряд пустыми ячейками, если нужно
+  while (row.children.length < 7) {
+    const td = document.createElement('td');
+    td.textContent = '';
+    row.appendChild(td);
+  }
+  tbody.appendChild(row);
+
+  calendarTable.appendChild(tbody);
+}
+
+// навигация
+prevBtn.addEventListener('click', () => {
+  currentMonth--;
+  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  buildCalendar(currentYear, currentMonth);
+});
+nextBtn.addEventListener('click', () => {
+  currentMonth++;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  buildCalendar(currentYear, currentMonth);
+});
+
+// первый рендер
+buildCalendar(currentYear, currentMonth);
+</script>
+
+
+
+
+<div class="card">
+  <h2>Таблица умножения 1–10</h2>
+  <div id="multTableContainer"></div>
+</div>
+
+<script>
+function buildMultiplicationTable(min, max, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = ''; // очистка
+
+  const table = document.createElement('table');
+  table.className = 'calendar'; // использовать те же стили для простоты
+  table.style.textAlign = 'center';
+
+  // шапка
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  headRow.appendChild(document.createElement('th')); // пустая верхняя левая ячейка
+  for (let i = min; i <= max; i++) {
+    const th = document.createElement('th');
+    th.textContent = i;
+    headRow.appendChild(th);
+  }
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  // тело
+  const tbody = document.createElement('tbody');
+  for (let r = min; r <= max; r++) {
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+    th.textContent = r;
+    tr.appendChild(th);
+
+    for (let c = min; c <= max; c++) {
+      const td = document.createElement('td');
+      td.textContent = r * c;
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+  container.appendChild(table);
+}
+
+buildMultiplicationTable(1, 10, 'multTableContainer');
+</script>
