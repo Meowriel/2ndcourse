@@ -1,0 +1,173 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Конструктор визиток</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="card-generator">
+            <div class="card-generator__heading">
+                <h1>Конструктор визиток</h1>
+            </div>
+            <form name="cardForm" class="form card-generator_form">
+                <div class="form-field">
+                    <label class="form-label"><h3>Наименование организации</h3></label>
+                    <input type="text" name="company" value="" class="form-control">
+                </div>
+                <div class="form-field">
+
+                    <label class="form-label"><h3>Фамилия, имя, отчество</h3></label>
+                    <div class="align-">
+                        <input type="text" name="fio" class="form-control">
+
+                        <div class="radio-wrapper">
+                            <label class="radio-control"><input type="radio" name="fio_align" value="left"><span class="radio-control__label"><span class="icon-left"></span></span></label>
+                            <label class="radio-control"><input type="radio" name="fio_align" value="center" checked><span class="radio-control__label" ><span class="icon-center"></span></span></label>
+                            <label class="radio-control"><input type="radio" name="fio_align" value="right"><span class="radio-control__label"><span class="icon-right"></span></span></label>
+                        </div>
+                        <div class="label-wrapper">
+                            <label class="label-a"><input type="radio" name="fio_size" value="24px"><span class="label-span-a">24px</span></label>
+                            <label class="label-a"><input type="radio" name="fio_size" value="26px" checked><span class="label-span-a">26px</span></label>
+                            <label class="label-a"><input  type="radio" name="fio_size" value="28px"><span class="label-span-a">28px</span></label>
+                        </div>
+                    </div>
+                    <div class="colors fio-color">
+                        <label class="col">
+                            <input type="radio" name="fio_color" value="black" checked><div class="circle black"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="fio_color" value="#3F88E8"><div class="circle blue"></div>
+                            </label>
+                        <label class="col">
+                           <input type="radio" name="fio_color" value="#E83F56"> <div class="circle red"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="fio_color" value="#097A14"><div class="circle green"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="fio_color" value="#DCA40A"><div class="circle yellow"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="fio_color" value="#DC0AD5"><div class="circle pink"></div>
+                            </label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label class="form-label"><h3>Должность</h3></label>
+
+                    <div class="align-">
+                        <input type="text" name="position" class="form-control">
+
+                        <div class="radio-wrapper">
+                            <label class="radio-control"><input type="radio" name="position_align" value="left"><span class="radio-control__label"><span class="icon-left"></span></span></label>
+                            <label class="radio-control"><input type="radio" name="position_align" value="center" checked><span class="radio-control__label" ><span class="icon-center"></span></span></label>
+                            <label class="radio-control"><input type="radio" name="position_align" value="right"><span class="radio-control__label"><span class="icon-right"></span></span></label>
+                        </div>
+                        <div class="label-wrapper">
+                            <label class="label-a"><input type="radio" name="position_size" value="14px"><span class="label-span-a">14px</span></label>
+                            <label class="label-a"><input type="radio" name="position_size" value="16px" checked><span class="label-span-a" >16px</span></label>
+                            <label class="label-a"><input  type="radio" name="position_size" value="18px"><span class="label-span-a">18px</span></label>
+                        </div>
+                    </div>
+                    <div class="colors position-color">
+                        <label class="col">
+                            <input type="radio" name="position_color" value="black" checked><div class="circle black"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="position_color" value="#474747"><div class="circle gray1"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="position_color" value="#636363"><div class="circle gray2"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="position_color" value="#9E9E9E"><div class="circle gray3"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="position_color" value="#BBBBBB"><div class="circle gray4"></div>
+                            </label>
+                        <label class="col">
+                            <input type="radio" name="position_color" value="#E3E3E3"><div class="circle gray5"></div>
+                            </label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label class="form-label"><h3>Телефон</h3></label>
+                    <input type="text" name="phone" value="" class="form-control">
+                    <input type="checkbox" class="form-check-input" id="chk">
+                    <div class="form-group">
+                        <label class="sec-phone" id="sec-phone-add" for="chk">Добавить еще один телефон</label>
+                        <div class="form-group input-phone">
+                            <label for="input-phone"></label>
+                            <input type="text" name="secondphone" id="input-phone" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label class="form-label"><h3>E-mail</h3></label>
+                    <div class="email-show">
+                        <input type="text" name="email" value="" class="form-control">
+                        <label class="email__checked">
+                            <input type="checkbox" name="check" id="emailCheckbox">
+                            <img src="img/checked.svg" class="img-checked" >
+                            <span class="show">Отображать</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label"><h3>Адрес</h3></label>
+                    <div class="address-show">
+                        <input type="text" name="address" value="" class="form-control">
+                        <label class="address__checked">
+                            <input type="checkbox" name="checkbox" id="addressCheckbox" >
+                            <img src="img/checked.svg" class="img-checked"  >
+                            <span class="show">Отображать</span>
+                        </label>
+                    </div>
+                    <!--Выберите изображение фона:
+                    <label>
+        <input type="radio" name="background" value="url('')" onclick="changeBackground(this.value)"> Красный фон
+    </label>
+                    <label>
+        <input type="radio" name="background" value="url('')" onclick="changeBackground(this.value)"> Зеленый фон
+    </label>
+                    <label>
+        <input type="radio" name="background" value="url('')" onclick="changeBackground(this.value)"> Синий фон
+    </label>-->
+
+                    <div class="form-action">
+                        <button type="button" class="button button--primary" onclick="apply(document.forms.cardForm)"><h2>Применить</h2></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-result">
+            <div class="card-preview">
+                <div class="card-preview__organization" id="result-company">
+                    ООО "Ориентир"
+                </div>
+                <div class="card-preview__fio" id="result-fio">
+                    Ивашина Надежда Алексеевна
+                </div>
+                <div class="card-preview__position" id="result-position">
+                    Менеджер по развитию
+                </div>
+                <div class="card-preview__details detail">
+                    <div class="detail__item" id="result-phone">8-(xxx)-xx-xx</div>
+                    <div class="detail__item" id="result-second-phone"></div>
+                    <div class="detail__item" id="result-email">uwu.@gmail.com</div>
+                    <div class="detail__item" id="result-address">Иркутск, Лермонтова, 126</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
