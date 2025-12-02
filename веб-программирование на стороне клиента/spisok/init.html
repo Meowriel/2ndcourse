@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>toDo list</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="workspace">
+
+        <div class="list-container">
+            <div class="b">
+
+                <h1>Список задач</h1>
+                <label class="label-add">
+            <button type="button" class="add" onclick="addTask(this)"></button>
+            <img src="img/Group%20416.svg">
+        <label class="add-pad">Добавить</label>
+                </label>
+
+            </div>
+            <ul class="task-list">
+
+                <li class="task-list__item">
+                    <label class="align">
+                <input type="checkbox" name="done" onclick="done(this)">
+                <img src="img/checkbox.svg" /> 
+                <span class="task-list__hiprio"> 
+                    <img src="img/hiprio.svg" class="img-hiprio">
+                    </span>
+                <span class="task-list__description">Задача 1</span>
+              </label>
+                    <span class="tools">
+                    <button onclick="editTask(this)" class="edit">
+                    <img src="img/pencil.svg">
+                    </button>
+                    <button onclick="deleteTask(this)" class="delete">
+                    <img src="img/trashbin.svg">
+                    </button>  
+                    </span>
+
+                </li>
+                <li class="task-list__item">
+                    <label class="align">
+                <input type="checkbox" name="done" onclick="done(this)">
+                <img src="img/checkbox.svg" /> 
+                <span class="task-list__hiprio"></span>
+                <span class="task-list__description">Задача 2</span>
+                  </label>
+                    <span class="tools">
+                    <button onclick="editTask(this)" class="edit">
+                        <img src="img/pencil.svg">
+                        </button> 
+                    <button onclick="deleteTask(this)" class="delete">
+                        <img src="img/trashbin.svg">
+                        </button>   
+                   </span>
+
+
+                </li>
+                <li class="task-list__item">
+                    <label class="align">
+                <input type="checkbox" name="done" onclick="done(this)">
+                <img src="img/checkbox.svg" /> 
+                <span class="task-list__hiprio"></span>
+                <span class="task-list__description">Задача 3</span>
+                </label>
+                    <label class="tools">
+                    <button onclick="editTask(this)" class="edit">
+                        <img src="img/pencil.svg">
+                        </button>
+                    <button onclick="deleteTask(this)" class="delete">
+                         <img src="img/trashbin.svg">
+                        </button>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="edit-form">
+            <div class="card--task">Карточка задачи</div>
+            <form name="taskEditForm">
+                <label class="style--task"> Задача</label>
+                <br>
+                <input type="text" name="task_description" placeholder="Описание задачи">
+
+                <label class="hiprio-align">
+                <input type="checkbox" name="task_hiprio">
+                <img src="img/checkbox.svg" /> 
+               <label class="style--hiprio"> Высокий приоритет </label>
+                <img src="img/hiprio.svg" class="img-hiprio">
+
+                </label>
+                <br>
+                <button type="button" onclick="saveTask(this)" class=" button button--save">Сохранить</button>
+                <button type="button" class="button button--cancel" onclick="cancelForm(this)">Отменить</button>
+
+            </form>
+        </div>
+
+    </div>
+    <script src="js.js">
+    </script>
+</body>
+
+</html>
