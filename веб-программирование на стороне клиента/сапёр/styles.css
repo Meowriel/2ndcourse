@@ -1,0 +1,136 @@
+body {
+    background-image: url("image (7).png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game-container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 25px;
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    margin-right: 20px;
+    font-size: 26px;
+    color: #333;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(12, 40px);
+    grid-template-rows: repeat(12, 40px);
+    border: 2px solid #333;
+    background-color: #bdc3c7;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #f5f5f5, #dcdcdc);
+    border: 1px solid #bdbdbd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    user-select: none;
+    transition: all 0.15s ease;
+    box-shadow: inset 2px 2px 3px #bebebe,
+                inset -2px -2px 3px #ffffff;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.cell.open {
+    background: #ffffff;
+    border: 1px solid #aaa;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+.cell.bomb {
+    background-color: #ff4c4c;
+    border: 1px solid #d00000;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+}
+
+.cell.flagged {
+    background-color: #fff5b3;
+    border: 1px solid #d8c463;
+}
+
+.cell.cursor {
+    background-color: #c1c1c1;
+    transform: scale(1.07);
+}
+
+.cell.cursor.bomb-cursor {
+    background-color: #ff6666;
+}
+
+.cell.open.bomb i::before {
+    content: "\f06d" !important;
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+}
+
+.cell.flagged i::before {
+    content: "\f024" !important;
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    color: red;
+}
+
+#message {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#reset-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.25s ease;
+    margin-top: 10px;
+}
+
+#reset-button:hover {
+    background-color: #2e7d32;
+    transform: scale(1.05);
+}
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
