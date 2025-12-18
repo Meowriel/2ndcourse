@@ -76,7 +76,6 @@ body {
     border: 1px solid #d00000;
     color: #fff;
     font-weight: bold;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
 }
 
 .cell.flagged {
@@ -87,23 +86,6 @@ body {
 .cell.cursor {
     background-color: #c1c1c1;
     transform: scale(1.07);
-}
-
-.cell.cursor.bomb-cursor {
-    background-color: #ff6666;
-}
-
-.cell.open.bomb i::before {
-    content: "\f06d" !important;
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-}
-
-.cell.flagged i::before {
-    content: "\f024" !important;
-    font-family: 'Font Awesome 6 Free' !important;
-    font-weight: 900 !important;
-    color: red;
 }
 
 #message {
@@ -129,8 +111,20 @@ body {
     background-color: #2e7d32;
     transform: scale(1.05);
 }
+
 #timer {
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.combo {
+    color: #d00000;
+    font-size: 1.3em;
+    animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
